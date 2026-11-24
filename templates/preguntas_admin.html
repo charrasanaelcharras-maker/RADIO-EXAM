@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar preguntas | RADIO EXAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-body">
+
+    <main class="admin-container">
+
+        <header class="admin-header">
+            <div>
+                <h1 class="admin-logo">RADIO EXAM</h1>
+                <p class="admin-subtitle">Gestión de preguntas</p>
+            </div>
+
+            <a href="{{ url_for('admin_inicio') }}" class="admin-btn admin-btn-secondary">
+                Volver al panel
+            </a>
+        </header>
+
+        <section class="admin-card">
+
+            <div class="admin-actions">
+                <div>
+                    <h2>Banco de preguntas</h2>
+                    <p>Administrá, modificá y eliminá preguntas.</p>
+                </div>
+
+                <a href="{{ url_for('nueva_pregunta') }}" class="admin-btn admin-btn-primary">
+                    + Nueva pregunta
+                </a>
+            </div>
+
+            {% with mensajes = get_flashed_messages() %}
+                {% if mensajes %}
+                    {% for mensaje in mensajes %}
+                        <p class="login-error">{{ mensaje }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="question-list">
+
+                {% for pregunta in preguntas %}
+
+                <article class="question-admin-card">
+
+                    <div class="question-admin-header">
+                        <span class="admin-category">
+                            {{ pregunta.categoria }}
+                        </span>
+
+                        <span class="question-id">
+                            #{{ pregunta.id }}
+                        </span>
+                    </div>
+
+                    <h3>{{ pregunta.pregunta }}</h3>
+
+                    <div class="option-list">
+                        {% for opcion in pregunta.opciones %}
+
+                        <div class="option-admin-item {% if opcion.es_correcta %}correct-option{% endif %}">
+                            <span class="option-admin-letter">
+                                {{ loop.index }}
+                            </span>
+
+                            <span>{{ opcion.texto }}</span>
+
+                            {% if opcion.es_correcta %}
+                                <span class="correct-label">Correcta</span>
+                            {% endif %}
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                    <div class="admin-actions">
+                        <a
+                            href="{{ url_for('editar_pregunta', id=pregunta.id) }}"
+                            class="admin-btn admin-btn-secondary"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('eliminar_pregunta', id=pregunta.id) }}"
+                            onsubmit="return confirm('¿Seguro que querés eliminar esta pregunta?');"
+                        >
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                            <button type="submit" class="admin-btn admin-btn-danger">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+
+                </article>
+
+                {% else %}
+
+                <p>No hay preguntas cargadas.</p>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        <footer class="admin-footer">
+            RADIO EXAM - Panel de administración
+        </footer>
+
+    </main>
+
+</body>
+</html>

@@ -290,3 +290,654 @@ button:hover {
         width: 130px;
     }
 }
+
+
+/* ==========================================
+   PANEL DE ADMINISTRACIÓN - RADIO EXAM
+========================================== */
+
+.admin-body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at top, #1e3a5f 0%, #101827 45%, #0b1120 100%);
+    color: #e8eef8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-container {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.admin-logo {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.admin-subtitle {
+    color: #94b8e8;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.admin-card {
+    background: rgba(23, 35, 56, 0.92);
+    border: 1px solid rgba(120, 160, 220, 0.18);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.admin-card h2,
+.admin-card h3 {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+.admin-welcome {
+    font-size: 16px;
+    color: #b9c9df;
+    margin-bottom: 25px;
+}
+
+.admin-stat {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.admin-stat-label {
+    color: #dbeafe;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.admin-stat-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin: 10px 0 0;
+}
+
+.admin-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #111d31;
+    border: 1px solid #263b5b;
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.admin-category strong {
+    color: #60a5fa;
+    font-size: 18px;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.admin-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.admin-btn-primary:hover {
+    background: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.admin-btn-secondary {
+    background: #263750;
+    color: #e8eef8;
+}
+
+.admin-btn-secondary:hover {
+    background: #354b68;
+}
+
+.admin-btn-danger {
+    background: #991b1b;
+    color: white;
+}
+
+.admin-btn-danger:hover {
+    background: #dc2626;
+}
+
+.admin-link {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.admin-link:hover {
+    text-decoration: underline;
+}
+
+.admin-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #94a3b8;
+}
+
+/* LOGIN */
+
+.login-body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at top, #1e3a5f 0%, #101827 50%, #0b1120 100%);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(23, 35, 56, 0.96);
+    border: 1px solid rgba(120, 160, 220, 0.2);
+    border-radius: 22px;
+    padding: 38px;
+    box-sizing: border-box;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.login-logo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: #94b8e8;
+    margin-bottom: 30px;
+}
+
+.login-card label {
+    display: block;
+    margin: 15px 0 8px;
+    color: #dbeafe;
+    font-weight: bold;
+}
+
+.login-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    border: 1px solid #354b68;
+    border-radius: 10px;
+    background: #0f1b2d;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #2563eb;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background: #3b82f6;
+    transform: translateY(-1px);
+}
+
+.login-error {
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid #7f1d1d;
+    color: #fca5a5;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.login-back {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    color: #94b8e8;
+    text-decoration: none;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 600px) {
+    .admin-body {
+        padding: 20px 12px;
+    }
+
+    .admin-card {
+        padding: 20px;
+    }
+
+    .admin-logo {
+        font-size: 30px;
+    }
+
+    .admin-stat-number {
+        font-size: 38px;
+    }
+
+    .admin-actions {
+        flex-direction: column;
+    }
+
+    .admin-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .login-card {
+        padding: 28px 22px;
+    }
+}
+
+
+/* =====================================
+   FORMULARIO DE PREGUNTAS DINÁMICAS
+===================================== */
+
+.admin-container .admin-card {
+    text-align: left;
+}
+
+.admin-container .admin-card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-container .admin-card form {
+    width: 100%;
+}
+
+.admin-container .admin-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.admin-container .admin-card .form-group label {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.admin-container .admin-card input[type="text"],
+.admin-container .admin-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid #344966;
+    border-radius: 9px;
+    background: #101b2d;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+}
+
+.admin-container .admin-card input[type="text"]:focus,
+.admin-container .admin-card textarea:focus {
+    border-color: #3978f6;
+    box-shadow: 0 0 0 3px rgba(57, 120, 246, 0.15);
+}
+
+.admin-container .admin-card textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.dynamic-options {
+    margin-top: 32px;
+    padding: 22px;
+    background: #101b2d;
+    border: 1px solid #344966;
+    border-radius: 12px;
+}
+
+.dynamic-options h3 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.dynamic-options > p {
+    color: #aebbd0;
+    margin-bottom: 22px;
+}
+
+#opciones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.dynamic-option-row {
+    display: grid;
+    grid-template-columns: 85px minmax(150px, 1fr) auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: #1b2a40;
+    border: 1px solid #344966;
+    border-radius: 10px;
+}
+
+.dynamic-option-row .option-letter {
+    font-weight: bold;
+    color: #8fb6ff;
+}
+
+.dynamic-option-row input[type="text"] {
+    min-width: 0;
+}
+
+.dynamic-option-row .correct-selector {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #c9d7eb;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.dynamic-option-row input[type="radio"] {
+    accent-color: #3978f6;
+    width: 17px;
+    height: 17px;
+}
+
+.remove-option {
+    padding: 9px 12px;
+    border: none;
+    border-radius: 7px;
+    background: #733343;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.remove-option:hover {
+    background: #a33c50;
+}
+
+.remove-option:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.dynamic-options > button {
+    margin-top: 5px;
+}
+
+.admin-container .admin-card .admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.admin-container .admin-card .admin-actions form {
+    width: auto;
+}
+
+@media (max-width: 650px) {
+    .dynamic-option-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .dynamic-option-row .correct-selector {
+        white-space: normal;
+    }
+
+    .dynamic-option-row .remove-option {
+        width: 100%;
+    }
+
+    .dynamic-options {
+        padding: 15px;
+    }
+
+    .admin-container .admin-card {
+        padding: 18px;
+    }
+}
+
+
+/* =====================================
+   EXAMEN - ESTILOS ACTUALIZADOS
+===================================== */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.exam-container {
+    background: #1e293b;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    text-align: left;
+}
+
+.exam-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.exam-header h2 {
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+.exam-header p {
+    color: #cbd5e1;
+}
+
+/* PROGRESO */
+
+.progress-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1e293b;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* TARJETAS DE PREGUNTAS */
+
+.question-card {
+    background: #293548;
+    padding: 25px;
+    margin: 22px 0;
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+.question-number {
+    color: #60a5fa;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.question-card h3 {
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 9px;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: background 0.2s;
+}
+
+.option:hover {
+    background: #37465e;
+}
+
+.option input {
+    margin-top: 4px;
+    accent-color: #3b82f6;
+}
+
+.option:has(input:checked) {
+    background: #263f66;
+    border: 1px solid #3b82f6;
+}
+
+/* BOTÓN FINALIZAR */
+
+.exam-actions {
+    text-align: center;
+    margin: 35px 0 10px;
+}
+
+.btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.footer {
+    padding: 20px;
+    color: #94a3b8;
+    text-align: center;
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px 10px;
+    }
+
+    .exam-container {
+        padding: 15px;
+    }
+
+    .question-card {
+        padding: 18px;
+    }
+
+    .progress-container {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso administrador - RADIO EXAM</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="login-body">
+
+    <main class="login-card">
+
+        <div class="login-logo">
+            RADIO EXAM
+        </div>
+
+        <p class="login-subtitle">
+            PANEL DE ADMINISTRACIÓN
+        </p>
+
+        <h2>Iniciar sesión</h2>
+
+        <p style="color: #94a3b8; font-size: 14px;">
+            Ingresá tus credenciales para continuar.
+        </p>
+
+        {% with mensajes = get_flashed_messages() %}
+            {% for mensaje in mensajes %}
+                <div class="login-error">
+                    {{ mensaje }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <label for="usuario">Usuario</label>
+
+            <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                placeholder="Ingresá tu usuario"
+                autocomplete="username"
+                required
+            >
+
+            <label for="contrasena">Contraseña</label>
+
+            <input
+                type="password"
+                id="contrasena"
+                name="contrasena"
+                placeholder="Ingresá tu contraseña"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" class="login-button">
+                INGRESAR
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('inicio') }}" class="login-back">
+            ← Volver al inicio
+        </a>
+
+    </main>
+
+</body>
+</html>

@@ -4,105 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen - RADIO EXAM</title>
+    <title>Examen | RADIO EXAM</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-    <header>
-        <h1>RADIO EXAM</h1>
-        <p>Examen de Técnica y Electrónica</p>
-    </header>
+    <main class="container">
 
-    <main>
+        <header class="header">
+            <h1>RADIO EXAM</h1>
+            <p>Examen de práctica - Técnica y Electrónica</p>
+        </header>
 
-        <h2>Examen de conocimientos</h2>
-        <p class="info">Seleccioná una respuesta para cada pregunta.</p>
+        <section class="exam-container">
 
-        <!-- BARRA DE PROGRESO FIJA -->
-        <div class="progreso-fijo">
-            <div class="progreso-contenedor">
-
-                <div class="progreso-info">
-                    <span>Progreso del examen</span>
-                    <span id="contador">0 de 15 respondidas</span>
-                </div>
-
-                <div class="barra-fondo">
-                    <div class="barra-progreso" id="barra"></div>
-                </div>
-
+            <div class="exam-header">
+                <h2>Examen de práctica</h2>
+                <p>Seleccioná una sola respuesta por pregunta.</p>
             </div>
-        </div>
 
-        <form action="{{ url_for('corregir') }}" method="POST" id="formulario">
-
-            {% for pregunta in preguntas %}
-            <section class="pregunta">
-
-                <div class="numero-pregunta">
-                    PREGUNTA {{ loop.index }} DE 15
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>Progreso</span>
+                    <span id="progress-text">0 de {{ preguntas|length }}</span>
                 </div>
 
-                <h3>{{ loop.index }}. {{ pregunta.pregunta }}</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
 
-                <label>
-                    <input type="radio" name="{{ pregunta.id }}" value="a" required>
-                    A) {{ pregunta.opcion_a }}
-                </label>
+            <form method="POST" action="{{ url_for('corregir') }}" id="exam-form">
 
-                <label>
-                    <input type="radio" name="{{ pregunta.id }}" value="b">
-                    B) {{ pregunta.opcion_b }}
-                </label>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-                <label>
-                    <input type="radio" name="{{ pregunta.id }}" value="c">
-                    C) {{ pregunta.opcion_c }}
-                </label>
+                {% for pregunta in preguntas %}
 
-                <label>
-                    <input type="radio" name="{{ pregunta.id }}" value="d">
-                    D) {{ pregunta.opcion_d }}
-                </label>
+                <article class="question-card">
 
-            </section>
-            {% endfor %}
+                    <div class="question-number">
+                        Pregunta {{ loop.index }} de {{ preguntas|length }}
+                    </div>
 
-            <button type="submit" class="boton-finalizar">
-                Finalizar examen
-            </button>
+                    <h3>{{ pregunta.pregunta }}</h3>
 
-        </form>
+                    <div class="options">
+
+                        {% for opcion in pregunta.opciones %}
+
+                        <label class="option">
+                            <input
+                                type="radio"
+                                name="{{ pregunta.id }}"
+                                value="{{ opcion.id }}"
+                                required
+                            >
+
+                            <span>{{ opcion.texto }}</span>
+                        </label>
+
+                        {% endfor %}
+
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+                <div class="exam-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Finalizar examen
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <footer class="footer">
+            RADIO EXAM
+        </footer>
 
     </main>
 
     <script>
-        const formulario = document.getElementById("formulario");
-        const contador = document.getElementById("contador");
-        const barra = document.getElementById("barra");
-
-        const totalPreguntas = 15;
+        const formulario = document.getElementById("exam-form");
+        const preguntas = document.querySelectorAll(".question-card");
+        const progreso = document.getElementById("progress-fill");
+        const textoProgreso = document.getElementById("progress-text");
 
         function actualizarProgreso() {
+            let respondidas = 0;
 
-            const respondidas = new Set();
+            preguntas.forEach(pregunta => {
+                if (pregunta.querySelector('input[type="radio"]:checked')) {
+                    respondidas++;
+                }
+            });
 
-            formulario.querySelectorAll('input[type="radio"]:checked')
-                .forEach(input => {
-                    respondidas.add(input.name);
-                });
+            const porcentaje = (respondidas / preguntas.length) * 100;
 
-            const cantidad = respondidas.size;
-            const porcentaje = (cantidad / totalPreguntas) * 100;
-
-            contador.textContent =
-                cantidad + " de " + totalPreguntas + " respondidas";
-
-            barra.style.width = porcentaje + "%";
+            progreso.style.width = porcentaje + "%";
+            textoProgreso.textContent =
+                respondidas + " de " + preguntas.length;
         }
 
         formulario.addEventListener("change", actualizarProgreso);
+
+        actualizarProgreso();
     </script>
 
 </body>

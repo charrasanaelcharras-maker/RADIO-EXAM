@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administración - RADIO EXAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="admin-body">
+
+<div class="admin-container">
+
+    <header class="admin-header">
+        <div class="admin-logo">RADIO EXAM</div>
+        <div class="admin-subtitle">SISTEMA DE ADMINISTRACIÓN</div>
+    </header>
+
+    <section class="admin-card">
+
+        <h2>Panel principal</h2>
+
+        <p class="admin-welcome">
+            Bienvenido, <strong>{{ session.get('admin_usuario') }}</strong>.
+            Desde aquí podés administrar el sistema.
+        </p>
+
+        <div class="admin-stat">
+            <div class="admin-stat-label">Total de preguntas</div>
+            <div class="admin-stat-number">{{ total_preguntas }}</div>
+        </div>
+
+        <h3>Preguntas por categoría</h3>
+
+        {% for categoria in categorias %}
+            <div class="admin-category">
+                <span>{{ categoria['categoria'] }}</span>
+                <strong>{{ categoria['cantidad'] }}</strong>
+            </div>
+        {% else %}
+            <p>No hay categorías disponibles.</p>
+        {% endfor %}
+
+    </section>
+
+    <section class="admin-card">
+
+        <h3>Gestión del banco de preguntas</h3>
+
+        <p>
+            Administrá las preguntas que forman parte de los exámenes.
+        </p>
+
+        <div class="admin-actions">
+
+            <a class="admin-btn admin-btn-primary"
+               href="{{ url_for('listar_preguntas') }}">
+                Gestionar preguntas
+            </a>
+
+            <a class="admin-btn admin-btn-secondary"
+               href="{{ url_for('nueva_pregunta') }}">
+                + Agregar pregunta
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="admin-card">
+
+        <h3>Sesión</h3>
+
+        <p>Tu sesión de administrador está activa.</p>
+
+        <form method="POST" action="{{ url_for('admin_logout') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <button type="submit" class="admin-btn admin-btn-danger">
+                Cerrar sesión
+            </button>
+        </form>
+
+    </section>
+
+    <footer class="admin-footer">
+        RADIO EXAM · Panel de administración
+    </footer>
+
+</div>
+
+</body>
+</html>
