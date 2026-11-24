@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resultado - RADIO EXAM</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>RADIO EXAM</h1>
+        <p>Resultado del examen</p>
+    </header>
+
+    <main class="resultado">
+
+        <h2>Examen finalizado</h2>
+
+        {% if aprobado %}
+            <h2 class="aprobado">¡APROBADO!</h2>
+            <p>¡Felicitaciones! Superaste el examen.</p>
+        {% else %}
+            <h2 class="desaprobado">NO APROBADO</h2>
+            <p>Necesitás al menos 11 respuestas correctas para aprobar.</p>
+        {% endif %}
+
+        <!-- PUNTAJE PRINCIPAL -->
+
+        <div class="resultado-principal">
+
+            <p class="puntaje">{{ correctas }} / {{ total }}</p>
+
+            <p>Respuestas correctas</p>
+
+        </div>
+
+        <!-- ESTADÍSTICAS -->
+
+        <div class="estadisticas">
+
+            <div class="estadistica">
+                <h3 class="aprobado">{{ correctas }}</h3>
+                <p>Correctas</p>
+            </div>
+
+            <div class="estadistica">
+                <h3 class="desaprobado">{{ incorrectas }}</h3>
+                <p>Incorrectas</p>
+            </div>
+
+        </div>
+
+        <!-- PORCENTAJE -->
+
+        <div class="porcentaje">
+
+            <h3>{{ porcentaje }}%</h3>
+
+            <p>Porcentaje de aciertos</p>
+
+        </div>
+
+        <!-- BARRA DE RESULTADOS -->
+
+        <div class="barra-fondo">
+            <div
+                class="barra-progreso"
+                id="barraResultado"
+                data-porcentaje="{{ porcentaje }}">
+            </div>
+        </div>
+
+        <p class="info">
+            Se necesitan 11 respuestas correctas de 15 para aprobar.
+        </p>
+
+        <!-- VOLVER AL INICIO -->
+
+        <a href="{{ url_for('inicio') }}">
+            <button type="button">Volver al inicio</button>
+        </a>
+
+    </main>
+
+    <script>
+        const barra = document.getElementById("barraResultado");
+
+        const porcentaje = Number(barra.dataset.porcentaje);
+
+        barra.style.width = porcentaje + "%";
+    </script>
+
+</body>
+</html>

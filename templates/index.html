@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADIO EXAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>RADIO EXAM</h1>
+        <p>Plataforma de práctica para radioaficionados</p>
+    </header>
+
+    <main>
+        <h2>Bienvenido a RADIO EXAM</h2>
+        <p>Practicá y preparate para tu examen de radioaficionado.</p>
+
+        <div class="categorias">
+            <div class="card">
+                <h3>Técnica y Electrónica</h3>
+                <p>150 preguntas disponibles para practicar tus conocimientos.</p>
+
+                <a href="{{ url_for('examen') }}">
+                    <button>Comenzar examen</button>
+                </a>
+            </div>
+        </div>
+
+        <p class="info">
+            El examen contiene 15 preguntas aleatorias.
+            Necesitás 11 respuestas correctas para aprobar.
+        </p>
+    </main>
+
+</body>
+</html>
